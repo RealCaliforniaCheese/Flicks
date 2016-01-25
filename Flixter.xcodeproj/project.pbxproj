@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A83E0BCC1C55913800CB7946 /* FlixCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */; };
+		A855738C1C556B3200318A89 /* FlixCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A855738B1C556B3200318A89 /* FlixCollectionCell.swift */; };
 		A8D8B1411C4D706F002FF4DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1401C4D706F002FF4DD /* AppDelegate.swift */; };
 		A8D8B1461C4D706F002FF4DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D8B1441C4D706F002FF4DD /* Main.storyboard */; };
 		A8D8B1481C4D706F002FF4DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D8B1471C4D706F002FF4DD /* Assets.xcassets */; };
 		A8D8B14B1C4D706F002FF4DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D8B1491C4D706F002FF4DD /* LaunchScreen.storyboard */; };
-		A8D8B1531C4D7442002FF4DD /* FlixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1521C4D7442002FF4DD /* FlixViewController.swift */; };
-		A8D8B1561C4DCBA0002FF4DD /* FlixCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1551C4DCBA0002FF4DD /* FlixCell.swift */; };
+		A8D8B1531C4D7442002FF4DD /* FlixTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1521C4D7442002FF4DD /* FlixTableViewController.swift */; };
+		A8D8B1561C4DCBA0002FF4DD /* FlixTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1551C4DCBA0002FF4DD /* FlixTableCell.swift */; };
 		F39B28490713E8FBE42EABF3 /* Pods_Flixter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C04C20FAF1F27908EC2719 /* Pods_Flixter.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,14 +22,16 @@
 		0FB6643BD2E90B0775A0CEC0 /* Pods-Flixter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flixter/Pods-Flixter.release.xcconfig"; sourceTree = "<group>"; };
 		12C04C20FAF1F27908EC2719 /* Pods_Flixter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flixter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E210AC2A61FEFCA21016C8 /* Pods-Flixter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flixter/Pods-Flixter.debug.xcconfig"; sourceTree = "<group>"; };
+		A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixCollectionViewController.swift; sourceTree = "<group>"; };
+		A855738B1C556B3200318A89 /* FlixCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixCollectionCell.swift; sourceTree = "<group>"; };
 		A8D8B13D1C4D706F002FF4DD /* Flixter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flixter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D8B1401C4D706F002FF4DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D8B1451C4D706F002FF4DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8D8B1471C4D706F002FF4DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8D8B14A1C4D706F002FF4DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8D8B14C1C4D706F002FF4DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8D8B1521C4D7442002FF4DD /* FlixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixViewController.swift; sourceTree = "<group>"; };
-		A8D8B1551C4DCBA0002FF4DD /* FlixCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixCell.swift; sourceTree = "<group>"; };
+		A8D8B1521C4D7442002FF4DD /* FlixTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixTableViewController.swift; sourceTree = "<group>"; };
+		A8D8B1551C4DCBA0002FF4DD /* FlixTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +90,8 @@
 		A8D8B1541C4DCB38002FF4DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A8D8B1551C4DCBA0002FF4DD /* FlixCell.swift */,
+				A855738B1C556B3200318A89 /* FlixCollectionCell.swift */,
+				A8D8B1551C4DCBA0002FF4DD /* FlixTableCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -94,7 +99,8 @@
 		A8D8B1571C4DCBB2002FF4DD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A8D8B1521C4D7442002FF4DD /* FlixViewController.swift */,
+				A8D8B1521C4D7442002FF4DD /* FlixTableViewController.swift */,
+				A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -230,8 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8D8B1411C4D706F002FF4DD /* AppDelegate.swift in Sources */,
-				A8D8B1561C4DCBA0002FF4DD /* FlixCell.swift in Sources */,
-				A8D8B1531C4D7442002FF4DD /* FlixViewController.swift in Sources */,
+				A855738C1C556B3200318A89 /* FlixCollectionCell.swift in Sources */,
+				A8D8B1561C4DCBA0002FF4DD /* FlixTableCell.swift in Sources */,
+				A8D8B1531C4D7442002FF4DD /* FlixTableViewController.swift in Sources */,
+				A83E0BCC1C55913800CB7946 /* FlixCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

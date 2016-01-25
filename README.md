@@ -2,7 +2,7 @@
 
 **Flixter** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **12** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -15,8 +15,8 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-- [ ] User sees an error message when there's a networking error.
-- [ ] Movies are displayed using a CollectionView instead of a TableView.
+- [x] User sees an error message when there's a networking error.
+- [x] Movies are displayed using a CollectionView instead of a TableView.
 - [ ] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] Customize the UI.
@@ -37,7 +37,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Connected TableViewCell instead of TableView which made references impossible.
 Scrolling - not knowing which key to press along with mouse scroll.
-Had trouble with progress wheel blocking from beginning solved by delay.
+Had trouble with progress wheel blocking from beginning.
+UI view ordering.
 
 ## License
 

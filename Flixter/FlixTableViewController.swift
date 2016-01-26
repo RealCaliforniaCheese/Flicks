@@ -16,8 +16,12 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var networkErrorView: UIView!
     
     var movies: [NSDictionary]?
+    var endpoint: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController!.navigationBar.barTintColor = UIColor.darkGrayColor()
         
         // Init cells as FlixTablViewController to be DataSource and Delegate
         tableView.dataSource = self
@@ -51,7 +55,7 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
                             progressHUD.labelText = "Loading..."
                             self.movies = responseDictionary["results"] as! [NSDictionary]
                             self.tableView.reloadData()
-                            progressHUD.hide(true, afterDelay: 1.5)
+                            progressHUD.hide(true, afterDelay: 0.5)
                             self.networkErrorView.hidden = true
                     }
                 }
@@ -77,11 +81,9 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If movies is not nil, assign to const movies
         if let movies = movies {
-            print ("Network Connected...")
             return movies.count
         }
         else {
-            print ("Network Disconnected...")
             self.networkErrorView.hidden = false
             return 0
         }
@@ -93,16 +95,17 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
-        
-        let baseUrl = "http://image.tmdb.org/t/p/w500"
-        let imageUrl = NSURL(string: baseUrl + posterPath)
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
-        cell.posterView.setImageWithURL(imageUrl!)
         
-        print("row \(indexPath.row)")
+        let baseUrl = "http://image.tmdb.org/t/p/w500"
+        
+        if let posterPath = movie["poster_path"] as? String {
+            let imageUrl = NSURL(string: baseUrl + posterPath)
+            cell.posterView.setImageWithURL(imageUrl!)
+        }
+        //print("row \(indexPath.row)")
         
         return cell
     }
@@ -116,14 +119,17 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
             dispatch_get_main_queue(), closure)
     } */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! FlixDetailViewController
+        detailViewController.movie = movie
     }
-    */
-
 }

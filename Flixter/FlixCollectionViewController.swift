@@ -20,6 +20,8 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController!.navigationBar.barTintColor = UIColor.darkGrayColor()
+        
         // Init cells as FlixCollectionViewController to be DataSource and Delegate
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -52,7 +54,7 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
                         progressHUD.labelText = "Loading..."
                         self.movies = responseDictionary["results"] as! [NSDictionary]
                         self.collectionView.reloadData()
-                        progressHUD.hide(true, afterDelay: 1.5)
+                        progressHUD.hide(true, afterDelay: 0.5)
                         self.networkErrorView.hidden = true
                     }
                 }
@@ -84,17 +86,16 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
-        let imageUrl = NSURL(string: baseUrl + posterPath)
         
-        cell.posterView.setImageWithURL(imageUrl!)
+        if let posterPath = movie["poster_path"] as? String {
+            let imageUrl = NSURL(string: baseUrl + posterPath)
+            cell.posterView.setImageWithURL(imageUrl!)
+        }
         
         return cell
     }
-
-    
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
@@ -105,6 +106,16 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
         self.collectionView.reloadData()
         refreshControl.endRefreshing()
     }
+        
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! FlixDetailViewController
+        detailViewController.movie = movie
+    }
 }
-
-// extension FlixCollectionViewController: UICollectionViewDataSource {

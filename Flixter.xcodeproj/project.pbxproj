@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A83E0BCC1C55913800CB7946 /* FlixCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */; };
 		A855738C1C556B3200318A89 /* FlixCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A855738B1C556B3200318A89 /* FlixCollectionCell.swift */; };
+		A8CD68C51C5743BE00DBE5FB /* FlixDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CD68C41C5743BE00DBE5FB /* FlixDetailViewController.swift */; };
 		A8D8B1411C4D706F002FF4DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D8B1401C4D706F002FF4DD /* AppDelegate.swift */; };
 		A8D8B1461C4D706F002FF4DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D8B1441C4D706F002FF4DD /* Main.storyboard */; };
 		A8D8B1481C4D706F002FF4DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D8B1471C4D706F002FF4DD /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		13E210AC2A61FEFCA21016C8 /* Pods-Flixter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flixter/Pods-Flixter.debug.xcconfig"; sourceTree = "<group>"; };
 		A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixCollectionViewController.swift; sourceTree = "<group>"; };
 		A855738B1C556B3200318A89 /* FlixCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixCollectionCell.swift; sourceTree = "<group>"; };
+		A8CD68C41C5743BE00DBE5FB /* FlixDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlixDetailViewController.swift; sourceTree = "<group>"; };
 		A8D8B13D1C4D706F002FF4DD /* Flixter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flixter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D8B1401C4D706F002FF4DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D8B1451C4D706F002FF4DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				A8D8B1521C4D7442002FF4DD /* FlixTableViewController.swift */,
 				A83E0BCB1C55913800CB7946 /* FlixCollectionViewController.swift */,
+				A8CD68C41C5743BE00DBE5FB /* FlixDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			files = (
 				A8D8B1411C4D706F002FF4DD /* AppDelegate.swift in Sources */,
 				A855738C1C556B3200318A89 /* FlixCollectionCell.swift in Sources */,
+				A8CD68C51C5743BE00DBE5FB /* FlixDetailViewController.swift in Sources */,
 				A8D8B1561C4DCBA0002FF4DD /* FlixTableCell.swift in Sources */,
 				A8D8B1531C4D7442002FF4DD /* FlixTableViewController.swift in Sources */,
 				A83E0BCC1C55913800CB7946 /* FlixCollectionViewController.swift in Sources */,

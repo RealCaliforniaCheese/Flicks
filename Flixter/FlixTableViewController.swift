@@ -10,25 +10,39 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class FlixTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FlixTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    // @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var networkErrorView: UIView!
     
+    var searchBar = UISearchBar()
+    
     var movies: [NSDictionary]?
+    var filteredMovies: [NSDictionary]!
     var endpoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController!.navigationBar.barTintColor = UIColor.darkGrayColor()
+        self.navigationController!.navigationBar.barStyle = .BlackTranslucent
+        
+        // searchBar.hidden = true
+        searchBar.sizeToFit()
+        
+        // the UIViewController comes with a navigationItem property
+        // this will automatically be initialized for you if when the
+        // view controller is added to a navigation controller's stack
+        // you just need to set the titleView to be the search bar
+        navigationItem.titleView = searchBar
         
         // Init cells as FlixTablViewController to be DataSource and Delegate
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -43,20 +57,20 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.insertSubview(refreshControl, atIndex: 0)
         
         
-        
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
-                if let data = dataOrNil {                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                        data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
-                            
-                            // Display HUD right before next request is made
-                            let progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                            progressHUD.labelText = "Loading..."
-                            self.movies = responseDictionary["results"] as! [NSDictionary]
-                            self.tableView.reloadData()
-                            progressHUD.hide(true, afterDelay: 0.5)
-                            self.networkErrorView.hidden = true
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data, options:[]) as? NSDictionary {
+                        NSLog("response: \(responseDictionary)")
+                        
+                        // Display HUD right before next request is made
+                        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        progressHUD.labelText = "Loading..."
+                        self.movies = responseDictionary["results"] as! [NSDictionary]
+                        self.filteredMovies = self.movies
+                        self.tableView.reloadData()
+                        self.networkErrorView.hidden = true
+                        progressHUD.hide(true, afterDelay: 0.5)
                     }
                 }
         });
@@ -66,6 +80,24 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
+        filteredMovies = searchText.isEmpty ? movies : movies!.filter({(movie: NSDictionary) -> Bool in
+            return (movie["title"] as! String).rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+        searchBar.showsCancelButton = false
+        
     }
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
@@ -80,8 +112,8 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If movies is not nil, assign to const movies
-        if let movies = movies {
-            return movies.count
+        if let filteredMovies = filteredMovies {
+            return filteredMovies.count
         }
         else {
             self.networkErrorView.hidden = false
@@ -91,33 +123,47 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FlixTableCell", forIndexPath: indexPath) as! FlixTableCell
+        cell.selectionStyle = .Blue
         
-        let movie = movies![indexPath.row]
+        let movie = filteredMovies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        let baseUrl = "http://image.tmdb.org/t/p/w500"
+        let baseUrl = "http://image.tmdb.org/t/p/w92"
         
         if let posterPath = movie["poster_path"] as? String {
             let imageUrl = NSURL(string: baseUrl + posterPath)
-            cell.posterView.setImageWithURL(imageUrl!)
-        }
-        //print("row \(indexPath.row)")
+            let imageRequest = NSURLRequest(URL: imageUrl!)
+//            cell.posterView.setImageWithURL(imageUrl!)
         
+        cell.posterView.setImageWithURLRequest(
+            imageRequest,
+            placeholderImage: nil,
+            success: { (imageRequest, imageResponse, image) -> Void in
+                
+                // imageResponse will be nil if the image is cached
+                if imageResponse != nil {
+                    print("Image was NOT cached, fade in image")
+                    cell.posterView.alpha = 0.0
+                    cell.posterView.image = image
+                    UIView.animateWithDuration(0.3, animations: { () -> Void in
+                        cell.posterView.alpha = 1.0
+                    })
+                } else {
+                    print("Image was cached so just update the image")
+                    cell.posterView.image = image
+                }
+            },
+            failure: { (imageRequest, imageResponse, error) -> Void in
+                // do something for the failure condition
+        })
+        }
         return cell
     }
     
-    /* func delay(delay:Double, closure:() -> ()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    } */
 
     // MARK: - Navigation
 
@@ -127,7 +173,7 @@ class FlixTableViewController: UIViewController, UITableViewDataSource, UITableV
         // Pass the selected object to the new view controller.
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
+        let movie = filteredMovies![indexPath!.row]
         
         let detailViewController = segue.destinationViewController as! FlixDetailViewController
         detailViewController.movie = movie

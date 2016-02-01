@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Cyl-Tr-ewB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Cyl-Tr-ewB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="w9Z-xp-bk7">
             <objects>
-                <navigationController id="Cyl-Tr-ewB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FlixNavigationController" id="Cyl-Tr-ewB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPv-hg-zZm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -30,12 +30,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Ep-ze-AsO">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="691"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="mba-fI-qLS" userLabel="Network Error View">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                <view key="tableFooterView" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="mba-fI-qLS" userLabel="Network Error View">
+                                    <rect key="frame" x="0.0" y="204" width="320" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" id="ZUH-gt-sVO">
@@ -54,7 +54,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FlixTableCell" rowHeight="112" id="dm9-Zg-UvI" customClass="FlixTableCell" customModule="Flixter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="320" height="112"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dm9-Zg-UvI" id="zT5-lr-oVw">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="111"/>
@@ -94,22 +94,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Flixter" id="IDV-uk-2Ic">
-                        <barButtonItem key="leftBarButtonItem" tag="-1" image="grid" id="NZX-Ds-dta">
-                            <connections>
-                                <segue destination="RtS-Jq-QO2" kind="push" id="dla-59-Q8m"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="M8T-Ez-DI5"/>
                     <connections>
                         <outlet property="collectionView" destination="3e0-iC-5JU" id="zNu-kN-VV6"/>
                         <outlet property="networkErrorView" destination="mba-fI-qLS" id="0FY-HQ-dly"/>
+                        <outlet property="searchDisplayController" destination="dWn-nY-ykV" id="0gS-7f-922"/>
                         <outlet property="tableView" destination="3Ep-ze-AsO" id="p0j-wW-RDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="dWn-nY-ykV">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="JXH-4K-P72"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="1s8-A4-Aak"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="zDg-ML-Fb4"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="0x3-8O-TBP"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="162" y="406"/>
+            <point key="canvasLocation" x="213" y="406"/>
         </scene>
         <!--FlixCollectionViewController-->
         <scene sceneID="bwI-eF-uQm">
@@ -130,7 +133,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="6lR-iC-0z7" userLabel="Network Error View">
-                                    <rect key="frame" x="0.0" y="-64" width="320" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" id="5aX-fa-dCl">
@@ -149,7 +152,7 @@
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FlixCollectionViewCell" reuseIdentifier="FlixCollectionCell" id="oJl-Bz-Ymo" customClass="FlixCollectionCell" customModule="Flixter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="153" height="247"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="247"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="247"/>
@@ -186,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayI-ze-vn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="406"/>
+            <point key="canvasLocation" x="-198" y="1087"/>
         </scene>
         <!--FlixDetailViewController-->
         <scene sceneID="23a-Bl-v0z">
@@ -203,19 +206,20 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mpr-YO-UhZ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" id="6R8-oW-mte">
                                         <rect key="frame" x="0.0" y="570" width="320" height="285"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dcd-kl-jqP">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dcd-kl-jqP">
                                                 <rect key="frame" x="8" y="0.0" width="304" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B3M-AX-3pK">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B3M-AX-3pK">
                                                 <rect key="frame" x="8" y="30" width="304" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -241,17 +245,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awd-d9-6Zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="406"/>
+            <point key="canvasLocation" x="614" y="406"/>
         </scene>
     </scenes>
     <resources>
-        <image name="grid" width="16" height="16"/>
         <image name="list" width="20" height="16"/>
         <image name="warning" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E1l-zP-Io6"/>
-        <segue reference="pUD-la-E5r"/>
+        <segue reference="sNO-mF-zil"/>
+        <segue reference="ZrO-sE-qQe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.77337585194240333" blue="0.29426343877907146" alpha="1" colorSpace="calibratedRGB"/>
 </document>

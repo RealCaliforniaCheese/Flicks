@@ -17,17 +17,19 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var networkErrorView: UIView!
     
     var movies: [NSDictionary]?
+    var endpoint: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController!.navigationBar.barTintColor = UIColor.darkGrayColor()
+        self.navigationController!.navigationBar.barStyle = .BlackTranslucent
         
         // Init cells as FlixCollectionViewController to be DataSource and Delegate
         collectionView.dataSource = self
         collectionView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -40,8 +42,6 @@ class FlixCollectionViewController: UIViewController, UICollectionViewDataSource
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex: 0)
-        
-        
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in

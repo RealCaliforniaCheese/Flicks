@@ -16,6 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let nowPlayingNavigationController = storyboard.instantiateViewControllerWithIdentifier("FlixNavigationController") as! UINavigationController
+        let nowPlayingViewController = nowPlayingNavigationController.topViewController as! FlixTableViewController
+        nowPlayingViewController.endpoint = "now_playing"
+        nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingNavigationController.tabBarItem.image = UIImage(named: "video")
+        
+        let topRatedNavigationController = storyboard.instantiateViewControllerWithIdentifier("FlixNavigationController") as! UINavigationController
+        let topRatedViewController = topRatedNavigationController.topViewController as! FlixTableViewController
+        topRatedViewController.endpoint = "top_rated"
+        topRatedNavigationController.tabBarItem.title = "Top Rated"
+        topRatedNavigationController.tabBarItem.image = UIImage(named: "star")
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nowPlayingNavigationController, topRatedNavigationController]
+        // Icons and title
+        UITabBar.appearance().alpha = 0.8
+        // Background
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        UITabBar.appearance().tintColor = UIColor.orangeColor()
+        
+        
+        
+        // Initial/root view controller
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
+        
+        
         return true
     }
 

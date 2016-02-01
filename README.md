@@ -17,9 +17,9 @@ The following **optional** features are implemented:
 
 - [x] User sees an error message when there's a networking error.
 - [x] Movies are displayed using a CollectionView instead of a TableView.
-- [ ] User can search for a movie.
-- [ ] All images fade in as they are loading.
-- [ ] Customize the UI.
+- [x] User can search for a movie.
+- [x] All images fade in as they are loading.
+- [x] Customize the UI.
 
 The following **additional** features are implemented:
 
@@ -29,7 +29,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/RealCaliforniaCheese/Flicks/blob/master/demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/RealCaliforniaCheese/Flicks/blob/master/demo_wk1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -53,13 +53,13 @@ Time spent: **6** hours spent in total
 The following **required** functionality is completed:
 
 - [x] User can view movie details by tapping on a cell.
-- [ ] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
-- [ ] Customize the selection effect of the cell.
+- [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [x] Customize the selection effect of the cell.
 
 The following **optional** features are implemented:
 
-- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
-- [ ] Customize the navigation bar.
+- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
+- [x] Customize the navigation bar.
 
 The following **additional** features are implemented:
 
@@ -74,13 +74,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/RealCaliforniaCheese/Flicks/blob/master/demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/RealCaliforniaCheese/Flicks/blob/master/demo_wk2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Navigation layout, coding lo/high image resolution, and search function.
 
 ## License
 
